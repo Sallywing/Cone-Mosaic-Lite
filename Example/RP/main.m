@@ -20,7 +20,7 @@ for i = 1:length(figureName)
     figurePath = [figureFolder,figureName{i}];
     [rrt{i},N(i),Area(i),density(i)]=GetCoordsJPGLabeled(figurePath,255,0.5,19,2.5,Scale_bar(Scale(i)));
     [NeighData{i},RegIndex(i)]=NearNeighborsStats(rrt{i},N(i),nbins,Scale_bar(Scale(i)),25,9);
-    VDarea{i} = voronoi_domain_stat([rrt{i}(1:length(rrt{i})/2),rrt{i}(length(rrt{i})/2+1:end)], [0 dim(i,1)], [0 dim(i,2)], Scale_bar(Scale(i))*1e-3, 0);
+    VDarea{i} = voronoi_domain_stat([rrt{i}(1:length(rrt{i})/2),rrt{i}(length(rrt{i})/2+1:end)], [0 dim(i,1)], [0 dim(i,2)], Scale_bar(Scale(i))*1e-3, 1);
     vat = [vat VDarea{i}];
     CC(i) = locCV(rrt{i}(1:N(i)),rrt{i}(N(i)+1:end),Scale_bar(Scale(i)));
     fprintf(fid, '%s\n', figureName{i});
